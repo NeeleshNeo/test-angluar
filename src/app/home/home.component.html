@@ -1,0 +1,17 @@
+<div class="position: relative">
+  <hr />
+  <a [routerLink]="['employe-form/create']">Add new employe</a>
+
+  <hr />
+  <div *ngFor="let emp of employes">
+    {{ emp.employee_name }}
+    <a [routerLink]="['employe-form/edit', emp.id]">edit</a>
+    <p (click)="showPopup(emp)">delete</p>
+    <hr />
+  </div>
+  <app-delete-popup
+    *ngIf="deletePopup"
+    [empDetails]="deleteEmpDetails"
+    (onConfirm)="onDelete()"
+  ></app-delete-popup>
+</div>
